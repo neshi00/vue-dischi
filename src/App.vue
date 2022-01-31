@@ -1,17 +1,20 @@
 <template>
   <div id="app">
-    <main-container />
+    <header-box />
+    <main-container :discs="discs" />
   </div>
 </template>
 
 <script>
 import axios from "axios";
 import MainContainer from "./components/MainContainer.vue";
+import HeaderBox from "./components/HeaderBox.vue";
 
 export default {
   name: "App",
   components: {
     MainContainer,
+    HeaderBox,
   },
   data() {
     return {
@@ -22,13 +25,13 @@ export default {
     axios
       .get("https://flynn.boolean.careers/exercises/api/array/music")
       .then((response) => {
-        this.discs = response.data;
+        console.log(response.data);
+        this.discs = response.data.response;
       });
   },
 };
 </script>
 
 <style lang="scss">
-#app {
-}
+@import "./style/ClassUtility.scss";
 </style>

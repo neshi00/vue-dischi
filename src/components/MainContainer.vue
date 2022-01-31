@@ -26,6 +26,9 @@ export default {
   .container {
     width: 1200px;
     margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 30px 0;
   }
 }
 </style>

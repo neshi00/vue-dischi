@@ -1,7 +1,7 @@
 <template>
   <div class="macro-container">
     <div class="container">
-      <disc-card v-for="(disc, index) in discs" :key="index" />
+      <disc-card v-for="(disc, index) in discs" :key="index" :disc="disc" />
     </div>
   </div>
 </template>

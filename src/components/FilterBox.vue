@@ -2,16 +2,20 @@
   <div class="container">
     <select @change="$emit('search', selected)" v-model="selected">
       <option value="all">All</option>
-      <option value="rock">Rock</option>
-      <option value="metal">Metal</option>
-      <option value="jazz">Jazz</option>
-      <option value="pop">Pop</option>
+      <option v-for="(genre, index) in list" :key="index" :value="genre">
+        {{ genre }}
+      </option>
     </select>
   </div>
 </template>
 
 <script>
 export default {
+  props: {
+    list: Array,
+    // array riempito in App.vue tramite funzione/computed genreArray
+    // e poi visualizzato in FilterBox tramite props
+  },
   data() {
     return {
       selected: "all",

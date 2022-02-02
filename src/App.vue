@@ -1,8 +1,9 @@
 <template>
   <div id="app">
     <header-box />
-    <filter-box @search="filterMusic" />
+    <filter-box @search="filterMusic" :list="genreArray" />
     <main-container :discs="filteredDiscs" />
+    {{ genreArray }}
   </div>
 </template>
 
@@ -24,6 +25,21 @@ export default {
       discs: [],
       filteredDiscs: [],
     };
+  },
+  // tramite i computed dinamicizzo il filtro dei generi
+  // che vengono aggiornati dinamicamente
+  // se avessi utilizzato un semplice metodo, una volta lanciato
+  // non si sarebbe più aggiornato
+  computed: {
+    genreArray() {
+      let list = [];
+      this.discs.forEach((disc) => {
+        if (!list.includes(disc.genre.toLowerCase())) {
+          list.push(disc.genre.toLowerCase());
+        }
+      });
+      return list;
+    },
   },
   mounted() {
     axios
